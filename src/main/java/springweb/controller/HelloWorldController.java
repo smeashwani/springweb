@@ -8,6 +8,15 @@ public class HelloWorldController {
 	
 	@RequestMapping("/")
 	public String display() {
+		
+		System.out.println("Controller");
 		return "index";
+	}
+	
+	@RequestMapping("/admin")
+	public String displayAdmin() {
+		
+		System.out.println("displayAdmin");
+		return "admin";
 	}
 }
