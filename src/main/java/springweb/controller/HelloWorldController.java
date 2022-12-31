@@ -1,74 +1,34 @@
 package springweb.controller;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CookieValue;
-import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("/hello")
 public class HelloWorldController {
-
-	// @RequestMapping(method = RequestMethod.GET)
-	@GetMapping(path = { "/getmapping", "/fetchMapping" })
-	public String get(HttpServletRequest req, HttpServletResponse res) {
-
-		System.out.println("Controller- fetchMapping");
-		return "index";
-	}
-
-	// @GetMapping(path= {"/getmapping"}, params="name")
-	// public String getParam(HttpServletRequest req, HttpServletResponse res) {
-	@GetMapping(path = { "/getParam" })
-	public String getParam(@RequestParam(name = "name", defaultValue = "Guest") String name) {
-
-		System.out.println("Controller-  params=name" + name);
-		return "index";
-	}
-
-	// hello/getCusomer/1234/details
-	@GetMapping(path = { "/getCustomer/{customerId}/details" })
-	public String getPathVariable(@PathVariable String customerId) {
-
-		System.out.println("Controller-  params=customerId" + customerId);
-		return "index";
-	}
-
-	@GetMapping(path = { "/getCookie" })
-	public String getCookiesValue(HttpServletRequest req, @CookieValue("JSESSIONID") String jsessionCookie) {
-		String value= "";
-		Cookie[] cookies = req.getCookies();
-		for (Cookie cookie : cookies) {
-			if (cookie.getName().equals("JSESSIONID")) {
-				value = cookie.getValue();
-			}
+	@RequestMapping("/hello")
+	public String display(HttpServletRequest req, Model m) {
+		// read the provided form data
+		String name = req.getParameter("name");
+		String pass = req.getParameter("pass");
+		if (pass.equals("admin")) {
+			String msg = "Hello " + name;
+			// add a message to the model
+			m.addAttribute("message", msg);
+			return "viewPage";
+		} else {
+			String msg = "Sorry " + name + ". You entered an incorrect password";
+			m.addAttribute("message", msg);
+			return "errorPage";
 		}
-		System.out.println("Controller-  cookie=" + value);
-		System.out.println("Controller-  jsessionCookie=" + jsessionCookie);
+	}
+	
+	@GetMapping("/")
+	public String welcomeFile() {
 		return "index";
 	}
-
-	// @RequestMapping(method = RequestMethod.POST)
-	@PostMapping
-	public String post(HttpServletRequest req, HttpServletResponse res) {
-
-		System.out.println("Controller- POST");
-		return "index";
-	}
-
-	// @RequestMapping(method = RequestMethod.DELETE)
-	@DeleteMapping
-	public String delete(HttpServletRequest req, HttpServletResponse res) {
-
-		System.out.println("Controller- DELETE");
-		return "index";
-	}
+	
 }
