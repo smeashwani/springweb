@@ -1,3 +1,3 @@
 Menu.jsp
-<p>Menu 1</p>
+<p><a href="/reservation/bookingForm">bookingForm</a></p>
 <p>Menu 2</p>
