@@ -1,13 +1,13 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <html>
 <body>
 	<form:form action="/reservation/submitForm"
 		modelAttribute="reservation">  
-        First name: <form:input path="firstName" />
+        <spring:message code="label.firstName" text="Name"/>: <form:input path="firstName" />
 		<br>
 		<br>  
-        Last name: <form:input path="lastName" />
-        ${param.error_lastName}
+        <spring:message code="label.lName" text="Last Name..."/>: <form:input path="lastName" />
 		<br>
 		<br>   
         Gender:   
