@@ -14,7 +14,8 @@ public class GlobalExceptionHandler {
     }
 	
     @ExceptionHandler({Exception.class, IllegalArgumentException.class})
-    public String ExceptionHandler(Model theModel, Exception ex) {       
+    public String ExceptionHandler(Model theModel, Exception ex) {
+    	ex.printStackTrace();
         theModel.addAttribute("message", "Global_Exception");
         return "errorPage";
     }

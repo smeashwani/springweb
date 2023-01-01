@@ -7,6 +7,7 @@
 		<br>
 		<br>  
         Last name: <form:input path="lastName" />
+        ${param.error_lastName}
 		<br>
 		<br>   
         Gender:   
