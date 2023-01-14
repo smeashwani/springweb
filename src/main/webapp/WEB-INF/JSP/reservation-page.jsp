@@ -1,15 +1,28 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <html>
+<style>
+.error {
+	color:red;
+}
+</style>
 <body>
-	<form:form action="/reservation/submitForm"
+	<form:form action="submitForm"
 		modelAttribute="reservation">  
-        <spring:message code="label.firstName" text="Name"/>: <form:input path="firstName" />
+        <spring:message code="label.firstName" text="Name"/>: 
+        <form:input path="firstName" />
+        <form:errors path="firstName" cssClass="error" />
 		<br>
 		<br>  
-        <spring:message code="label.lName" text="Last Name..."/>: <form:input path="lastName" />
+        <spring:message code="label.lName" text="Last Name..."/>: 
+        <form:input path="lastName" />
+        <form:errors path="lastName" cssClass="error" />
 		<br>
-		<br>   
+		<br> 
+		<spring:message code="label.password" text="Password."/>: 
+        <form:input path="password" />
+        <form:errors path="password" cssClass="error" />
+        </br>  
         Gender:   
         Male <form:radiobutton path="gender" value="Male" />  
         Female <form:radiobutton path="gender" value="Female" />

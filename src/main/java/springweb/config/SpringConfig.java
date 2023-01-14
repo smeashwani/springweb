@@ -19,17 +19,6 @@ import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 @ComponentScan(basePackages = "springweb.controller")
 public class SpringConfig implements WebMvcConfigurer {
 
-	// @Bean
-	// public ViewResolver viewResolver() {
-	// InternalResourceViewResolver viewResolver = new
-	// InternalResourceViewResolver();
-	// viewResolver.setViewClass(JstlView.class);
-	// viewResolver.setPrefix("/WEB-INF/JSP/");
-	// viewResolver.setSuffix(".jsp");
-	//
-	// return viewResolver;
-	// }
-
 	@Bean
 	public TilesConfigurer tilesConfigurer() {
 		TilesConfigurer configure = new TilesConfigurer();
@@ -66,5 +55,4 @@ public class SpringConfig implements WebMvcConfigurer {
 		messageSource.setDefaultEncoding("UTF-8");
 		return messageSource;
 	}
-
 }
