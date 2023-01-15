@@ -1,17 +1,17 @@
 package springweb.controller;
 
-import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
-import springweb.entity.ReservationEntity;
 import springweb.model.Reservation;
 import springweb.service.ReservationService;
 
@@ -47,6 +47,14 @@ public class ReservationController {
 		System.out.println("ReservationController.submitForm()....");
 		reservationService.save(res);
 		return "confirmation-page";
+	}
+	
+	@GetMapping("/viewAllReservation")
+	public ModelAndView getAllReservation() {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("reservationLst", reservationService.findAll());
+		mv.setViewName("view-reservation-page");
+		return mv;
 	}
 
 }

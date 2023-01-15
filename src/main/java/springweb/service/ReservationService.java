@@ -1,5 +1,7 @@
 package springweb.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,5 +22,9 @@ public class ReservationService {
 		ReservationEntity entity = dao.save(Convertor.cvt(res));
 		System.out.println("Saved in DB");
 		return res;
+	}
+	
+	public List<ReservationEntity> findAll() {
+		return dao.findAll();
 	}
 }

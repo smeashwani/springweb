@@ -24,4 +24,12 @@
 		<put-attribute name="title" value="Exception" />
 		<put-attribute name="body" value="/WEB-INF/JSP/errorPage.jsp" />
 	</definition>
+	
+	
+	<definition name="view-reservation-page" extends="base.definition">
+		<put-attribute name="title" value="Hello Spring MVC" />
+		<put-attribute name="body" value="/WEB-INF/JSP/view-reservation-page.jsp" />
+	</definition>
+	
+	
 </tiles-definitions>
