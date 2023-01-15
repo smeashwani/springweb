@@ -1,6 +1,7 @@
 package springweb.utils;
 
-import java.lang.reflect.InvocationTargetException;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.BeanUtils;
 
@@ -16,6 +17,14 @@ public class Convertor {
 		ReservationEntity entity = new ReservationEntity();
 		BeanUtils.copyProperties(res,entity);
 		return entity;
+	}
+
+	public static List<Reservation> cvt(List<ReservationEntity> findAll) {
+		return findAll.stream().map(item -> {
+			Reservation res = new Reservation();
+			BeanUtils.copyProperties(item,res);
+		return res;
+		}).collect(Collectors.toList());
 	}
 
 }

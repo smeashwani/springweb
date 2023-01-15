@@ -23,6 +23,10 @@
         <form:input path="password" />
         <form:errors path="password" cssClass="error" />
         </br>  
+        <spring:message code="label.amount" text="Amount."/>: 
+        <form:input path="amount" />
+        <form:errors path="amount" cssClass="error" />
+        </br> 
         Gender:   
         Male <form:radiobutton path="gender" value="Male" />  
         Female <form:radiobutton path="gender" value="Female" />

@@ -3,17 +3,27 @@ package springweb.model;
 import javax.validation.constraints.Size;
 
 public class Reservation {
-	
-	@Size(min=2, message="At least 2 char")
+
+	private int id;
+	@Size(min = 2, message = "At least 2 char")
 	private String firstName;
 	private String lastName;
 	private String password;
-	private String gender; 
+	private String gender;
 	private String[] food;
-	private String cityFrom;  
+	private String cityFrom;
 	private String cityTo;
+	private int amount;
 
 	public Reservation() {
+	}
+	
+	public int getId() {
+		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getFirstName() {
@@ -71,5 +81,12 @@ public class Reservation {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
+
+	public int getAmount() {
+		return amount;
+	}
 }
