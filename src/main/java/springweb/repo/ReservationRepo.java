@@ -2,25 +2,28 @@ package springweb.repo;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.hibernate5.HibernateTemplate;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+
 import org.springframework.stereotype.Repository;
 
 import springweb.entity.ReservationEntity;
 
 @Repository
 public class ReservationRepo {
-	
-	@Autowired
-	HibernateTemplate template;
+
+	@PersistenceContext
+	EntityManager entityManager;
 
 	public ReservationEntity save(ReservationEntity res) {
-		template.save(res);
+		entityManager.persist(res);
 		return res;
 	}
-	
-	@SuppressWarnings({ "deprecation", "unused" })
-	public List<ReservationEntity> findAll(){
-	return  (List<ReservationEntity>) template.find("From ReservationEntity",null);
+
+	public List<ReservationEntity> findAll() {
+		TypedQuery<ReservationEntity> query = entityManager.createQuery("From ReservationEntity",
+				ReservationEntity.class);
+		return query.getResultList();
 	}
 }
