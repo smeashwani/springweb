@@ -16,7 +16,7 @@ import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 
 @EnableWebMvc
-@ComponentScan(basePackages = "springweb.controller")
+@ComponentScan(basePackages = "springweb")
 public class SpringConfig implements WebMvcConfigurer {
 
 	@Bean

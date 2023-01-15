@@ -1,19 +1,25 @@
-package springweb.model;
+package springweb.entity;
 
-import javax.validation.constraints.Size;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-public class Reservation {
-	
-	@Size(min=2, message="At least 2 char")
+@Entity
+public class ReservationEntity {
+	@Id
+	@GeneratedValue(strategy= GenerationType.AUTO)
+	private int id;
 	private String firstName;
 	private String lastName;
 	private String password;
 	private String gender; 
 	private String[] food;
-	private String cityFrom;  
+	private String cityFrom;
 	private String cityTo;
+	
 
-	public Reservation() {
+	public ReservationEntity() {
 	}
 
 	public String getFirstName() {
