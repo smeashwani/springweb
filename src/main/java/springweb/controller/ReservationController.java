@@ -52,6 +52,7 @@ public class ReservationController {
 	@GetMapping("/viewAllReservation")
 	public ModelAndView getAllReservation() {
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("reservationLstByFirstName", reservationService.findByFirstName("999"));
 		mv.addObject("reservationLst", reservationService.findAll());
 		mv.setViewName("view-reservation-page");
 		return mv;

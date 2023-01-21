@@ -2,28 +2,19 @@ package springweb.repo;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
-
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import springweb.entity.ReservationEntity;
 
 @Repository
-public class ReservationRepo {
-
-	@PersistenceContext
-	EntityManager entityManager;
-
-	public ReservationEntity save(ReservationEntity res) {
-		entityManager.persist(res);
-		return res;
-	}
-
-	public List<ReservationEntity> findAll() {
-		TypedQuery<ReservationEntity> query = entityManager.createQuery("From ReservationEntity",
-				ReservationEntity.class);
-		return query.getResultList();
-	}
+public interface ReservationRepo extends JpaRepository<ReservationEntity, Integer> {
+ 
+	//@Query("select r from ReservationEntity r where r.lastName =  :firstName")
+	List<ReservationEntity> findByFirstName(@Param("firstName") String firstName);
+	
+	//@Query("select r from ReservationEntity r where r.lastName =  ?1")
+	//List<ReservationEntity> findByFirstName(String firstName);
 }

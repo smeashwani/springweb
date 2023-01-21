@@ -15,7 +15,7 @@ import springweb.repo.ReservationRepo;
 import springweb.utils.Convertor;
 
 @Service
-//
+@Transactional
 public class ReservationService {
 	
 	@Autowired
@@ -52,5 +52,10 @@ public class ReservationService {
 		});
 		
 		return cvt;
+	}
+	
+	
+	public List<ReservationEntity> findByFirstName(String firstName){
+		return reservationDao.findByFirstName(firstName);
 	}
 }
