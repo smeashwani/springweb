@@ -1,6 +1,7 @@
 package springweb.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,12 +10,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import springweb.model.Reservation;
 import springweb.service.ReservationService;
 
-@Controller
+@RestController
 @RequestMapping("/reservation")
 public class ReservationController {
 
@@ -50,10 +54,12 @@ public class ReservationController {
 	
 	
 	@PostMapping(value="/submitFormByRequestBody", consumes= {MediaType.APPLICATION_JSON_VALUE})
-	public String submitFormByRequestBody(@RequestBody Reservation res) {
+	@ResponseBody
+	@ResponseStatus(value= HttpStatus.CREATED)
+	public Reservation submitFormByRequestBody(@RequestBody Reservation res) {
 		System.out.println("ReservationController.submitForm()...." + res);
 		reservationService.save(res);
-		return "confirmation-page";
+		return res;
 	}
 	
 	@GetMapping("/viewAllReservation")
