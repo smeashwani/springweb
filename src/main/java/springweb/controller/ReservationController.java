@@ -1,14 +1,13 @@
 package springweb.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -45,6 +44,14 @@ public class ReservationController {
 	// @ModelAttribute binds form data to the object
 	public String submitForm(@ModelAttribute("reservation") Reservation res) {
 		System.out.println("ReservationController.submitForm()....");
+		reservationService.save(res);
+		return "confirmation-page";
+	}
+	
+	
+	@PostMapping(value="/submitFormByRequestBody", consumes= {MediaType.APPLICATION_JSON_VALUE})
+	public String submitFormByRequestBody(@RequestBody Reservation res) {
+		System.out.println("ReservationController.submitForm()...." + res);
 		reservationService.save(res);
 		return "confirmation-page";
 	}

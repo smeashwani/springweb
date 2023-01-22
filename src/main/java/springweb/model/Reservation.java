@@ -1,5 +1,7 @@
 package springweb.model;
 
+import java.util.Arrays;
+
 import javax.validation.constraints.Size;
 
 public class Reservation {
@@ -89,4 +91,13 @@ public class Reservation {
 	public int getAmount() {
 		return amount;
 	}
+
+	@Override
+	public String toString() {
+		return "Reservation [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", password="
+				+ password + ", gender=" + gender + ", food=" + Arrays.toString(food) + ", cityFrom=" + cityFrom
+				+ ", cityTo=" + cityTo + ", amount=" + amount + "]";
+	}
+	
+	
 }

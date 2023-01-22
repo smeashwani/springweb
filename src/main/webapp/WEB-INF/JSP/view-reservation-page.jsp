@@ -1,3 +1,5 @@
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>  
+  
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 
@@ -39,6 +41,30 @@
 		</c:forEach>
 
 	</table>
-	
+		<button onclick="send()">send by ajax</button>
+<script type="text/javascript">
+    function send() {
+        var reservation = {
+        	    "firstName": "first1",
+        	    "lastName": "last1",
+        	    "password": "welcome1",
+        	    "amount": 100
+        };
+
+        $.ajax({
+            url: 'http://localhost:8080/reservation/submitFormByRequestBody',
+            type: 'post',
+            dataType: 'json',
+            contentType: 'application/json',
+            data: JSON.stringify(reservation),
+            success: function (data) {
+            	location.reload(true);
+            },
+            error: function() { 
+            	location.reload(true);
+            }
+        });
+    }
+</script>
 </body>
 </html>
