@@ -1,5 +1,5 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <html>
 <style>
 .error {
@@ -7,8 +7,7 @@
 }
 </style>
 <body>
-	<form:form action="submitForm"
-		modelAttribute="reservation">  
+	<form:form action="submitForm" modelAttribute="reservation">  
         <spring:message code="label.firstName" text="Name"/>: 
         <form:input path="firstName" />
         <form:errors path="firstName" cssClass="error" />

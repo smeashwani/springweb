@@ -1,7 +1,6 @@
 package springweb.model;
 
-import javax.validation.constraints.Size;
-
+import jakarta.validation.constraints.Size;
 import springweb.validator.Password;
 
 public class Reservation {
@@ -73,6 +72,5 @@ public class Reservation {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-	
+	}	
 }
