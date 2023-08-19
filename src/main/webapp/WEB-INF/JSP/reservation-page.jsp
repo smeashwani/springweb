@@ -1,7 +1,7 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <html>
 <body>
-	<form:form action="/reservation/submitForm"
+	<form:form action="submitForm"
 		modelAttribute="reservation">  
         First name: <form:input path="firstName" />
 		<br>
