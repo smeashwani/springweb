@@ -1,10 +1,9 @@
 package springweb.config;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.web.servlet.HandlerInterceptor;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 public class ValidationInterceptor implements HandlerInterceptor {
 	@Override
@@ -15,7 +14,7 @@ public class ValidationInterceptor implements HandlerInterceptor {
 		if (lastName == null || lastName.length() == 0) {
 			System.out.println("validation interceptor... " + lastName);
 			String error = "lastname should not be null";
-			response.sendRedirect("/reservation/bookingForm?error_lastName="+error);
+			response.sendRedirect("../reservation/bookingForm?error_lastName="+error);
 			return false;
 		}
 		// if returned false, we need to make sure 'response' is sent
