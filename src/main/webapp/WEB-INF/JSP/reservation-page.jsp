@@ -2,7 +2,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <html>
 <body>
-	<form:form action="/reservation/submitForm"
+	<form:form action="../reservation/submitForm"
 		modelAttribute="reservation">  
         <spring:message code="label.firstName" text="Name"/>: <form:input path="firstName" />
 		<br>
