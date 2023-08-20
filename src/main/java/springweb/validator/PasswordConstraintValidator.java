@@ -6,8 +6,7 @@ import jakarta.validation.ConstraintValidatorContext;
 public class PasswordConstraintValidator implements ConstraintValidator<Password, String> {
 	@Override
 	public boolean isValid(String s, ConstraintValidatorContext cvc) {
-		boolean result = s.contains("java");
-		return result;
+		return s.contains("java");
 	}
 
 	@Override

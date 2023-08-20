@@ -1,5 +1,6 @@
 package springweb.model;
 
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import springweb.validator.Password;
 
@@ -7,7 +8,10 @@ public class Reservation {
 	
 	@Size(min=2, message="At least 2 char")
 	private String firstName;
+	
+	@NotBlank(message = "can't be blank")
 	private String lastName;
+	
 	@Password(message="Must Contain java...")
 	private String password;
 	private String gender; 

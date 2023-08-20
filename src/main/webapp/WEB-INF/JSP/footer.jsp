@@ -1,1 +1,0 @@
-<hr/><p>Copyright  2023-2024 ducatIndia.com</p>
