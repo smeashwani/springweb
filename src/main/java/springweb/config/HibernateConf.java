@@ -1,12 +1,13 @@
 package springweb.config;
 
+import java.sql.SQLException;
 import java.util.Properties;
 
 import javax.sql.DataSource;
 
-import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
@@ -41,12 +42,14 @@ public class HibernateConf {
 	 */
 
 	@Bean
-	public DataSource dataSource() {
-		BasicDataSource dataSource = new BasicDataSource();
-		dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://localhost:3306/training");
-		dataSource.setUsername("root");
-		dataSource.setPassword("root");
+	public DataSource dataSource()  {
+		DataSource dataSource = null;
+		try {
+			dataSource = new SimpleDriverDataSource(new com.mysql.cj.jdbc.Driver(),"jdbc:mysql://localhost:3306/training","root","root");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return dataSource;
 	}
 	
