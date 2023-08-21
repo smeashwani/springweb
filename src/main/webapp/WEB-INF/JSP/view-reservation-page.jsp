@@ -52,7 +52,7 @@
         };
 
         $.ajax({
-            url: 'http://localhost:8080/reservation/submitFormByRequestBody',
+            url: 'http://localhost:9090/SpringMVC/reservation/submitFormByRequestBody',
             type: 'post',
             dataType: 'json',
             contentType: 'application/json',

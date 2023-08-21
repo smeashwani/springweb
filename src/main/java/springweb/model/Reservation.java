@@ -2,7 +2,7 @@ package springweb.model;
 
 import java.util.Arrays;
 
-import javax.validation.constraints.Size;
+import jakarta.validation.constraints.Size;
 
 public class Reservation {
 
