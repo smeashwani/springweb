@@ -1,10 +1,9 @@
 package springweb.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.NamedQuery;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 @Entity
 //@NamedQuery(name = "ReservationEntity.findByFirstName", query = "select r from ReservationEntity r where r.lastName =  :firstName")
