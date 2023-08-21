@@ -9,9 +9,9 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
-		<spring.version>5.3.12</spring.version>
+		<java.version>17</java.version>
+		<spring.version>6.0.11</spring.version>
+		<hibernate.validator>8.0.0.Final</hibernate.validator>
 	</properties>
 
 	<dependencies>
@@ -26,9 +26,9 @@
 			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>javax</groupId>
-			<artifactId>javaee-web-api</artifactId>
-			<version>6.0</version>
+			<groupId>jakarta.servlet</groupId>
+			<artifactId>jakarta.servlet-api</artifactId>
+			<version>6.0.0</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -37,15 +37,14 @@
 			<version>8.0.27</version>
 		</dependency>
 		<dependency>
-			<groupId>jstl</groupId>
-			<artifactId>jstl</artifactId>
-			<version>1.2</version>
+			<groupId>jakarta.servlet.jsp.jstl</groupId>
+			<artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+			<version>3.0.0</version>
 		</dependency>
-		<!-- tiles -->
 		<dependency>
-			<groupId>org.apache.tiles</groupId>
-			<artifactId>tiles-jsp</artifactId>
-			<version>3.0.7</version>
+			<groupId>org.glassfish.web</groupId>
+			<artifactId>jakarta.servlet.jsp.jstl</artifactId>
+			<version>3.0.1</version>
 		</dependency>
 		<!--spring Hibernate integration jar-->
 		<dependency>
@@ -60,16 +59,21 @@
 		</dependency>
 		<!-- Hibernate jar-->
 		<dependency>
+			<groupId>org.hibernate.validator</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>${hibernate.validator}</version>
+		</dependency>
+		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
-			<version>5.4.23.Final</version>
+			<version>6.2.2.Final</version>
 		</dependency>
 		<!-- mysql jar-->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>8.0.11</version>
-		</dependency>		
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>SpringMVC</finalName>
@@ -78,39 +82,38 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
-					<version>3.2</version>
+					<version>3.10.1</version>
 					<configuration>
 						<verbose>true</verbose>
-						<source>1.8</source>
-						<target>1.8</target>
+						<source>17</source>
+						<target>17</target>
 						<showWarnings>true</showWarnings>
 					</configuration>
 				</plugin>
 				<plugin>
-					<groupId>org.apache.tomcat.maven</groupId>
-					<artifactId>tomcat7-maven-plugin</artifactId>
-					<version>2.2</version>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-war-plugin</artifactId>
+					<version>3.3.2</version>
 					<configuration>
-						<path>/</path>
-						<contextReloadable>true</contextReloadable>
+						<failOnMissingWebXml>false</failOnMissingWebXml>
 					</configuration>
 				</plugin>
-				<!-- <plugin>
+				<plugin>
 					<groupId>org.codehaus.cargo</groupId>
 					<artifactId>cargo-maven3-plugin</artifactId>
-					<version>1.10.4</version>
+					<version>1.10.6</version>
 					<configuration>
-						<path>/</path>
-						<contextReloadable>true</contextReloadable>
 						<container>
-							<timeout>0</timeout>
-							<containerId>tomcat9x</containerId>
-							<installerZipFile>
-								https://repo1.maven.apache.org/maven2/org/acache/tomcat/tomcat/9.0.58/tomcat-9.0.58.zip
-							</installerZipFile>
+							<containerId>tomcat10x</containerId>
 						</container>
+						<configuration>
+							<properties>
+								<cargo.servlet.port>9090</cargo.servlet.port>
+								<cargo.logging>low</cargo.logging>
+							</properties>
+						</configuration>
 					</configuration>
-				</plugin> -->
+				</plugin>
 			</plugins>
 		</pluginManagement>
 	</build>

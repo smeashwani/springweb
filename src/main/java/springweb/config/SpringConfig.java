@@ -12,26 +12,23 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
-import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
-import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.web.servlet.view.JstlView;
 
 @EnableWebMvc
 @ComponentScan(basePackages = "springweb")
 public class SpringConfig implements WebMvcConfigurer {
 
 	@Bean
-	public TilesConfigurer tilesConfigurer() {
-		TilesConfigurer configure = new TilesConfigurer();
-		configure.setDefinitions("/WEB-INF/tiles.xml");
-		return configure;
-	}
-
-	@Bean
 	public ViewResolver viewResolver() {
-		TilesViewResolver viewResolver = new TilesViewResolver();
+		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
+		viewResolver.setViewClass(JstlView.class);
+		viewResolver.setPrefix("/WEB-INF/JSP/");
+		viewResolver.setSuffix(".jsp");
+
 		return viewResolver;
 	}
-
+	
 	@Bean
 	public LocaleResolver localeResolver() {
 		return new CookieLocaleResolver();
