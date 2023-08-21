@@ -17,6 +17,8 @@ public class GlobalExceptionHandler {
     public String ExceptionHandler(Model theModel, Exception ex) {
     	ex.printStackTrace();
         theModel.addAttribute("message", "Global_Exception");
+        theModel.addAttribute("exception", ex.getMessage());
+        
         return "errorPage";
     }
 }

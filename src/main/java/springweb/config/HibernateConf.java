@@ -19,13 +19,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 public class HibernateConf {
 
 	@Bean
-	public HibernateTemplate getDBTemplate() {
-		HibernateTemplate temp = new HibernateTemplate();
-		temp.setSessionFactory(sessionFactory().getObject());
-		return temp;
-	}
-	
-	@Bean
 	public LocalSessionFactoryBean sessionFactory() {
 		LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
 		sessionFactory.setDataSource(dataSource());
