@@ -43,7 +43,7 @@
 	</table>
 		<button onclick="send()">send by ajax</button>
 <script type="text/javascript">
-    function send() {
+    	function send() {
         var reservation = {
         	    "firstName": "first1",
         	    "lastName": "last1",
@@ -52,7 +52,7 @@
         };
 
         $.ajax({
-            url: 'http://localhost:8080/reservation/submitFormByRequestBody',
+            url: 'http://localhost:9090/SpringMVC/reservation/submitFormByRequestBody',
             type: 'post',
             dataType: 'json',
             contentType: 'application/json',
