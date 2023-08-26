@@ -31,7 +31,7 @@ public class ReservationService {
 		pEntity.setResId(entity.getId());
 		pEntity.setAmount(res.getAmount());
 		paymentDao.save(pEntity);
-		//int i =10/0;
+		int i =10/0;
 //		if(res != null) {
 //			throw new RuntimeException();
 //		}

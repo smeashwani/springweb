@@ -39,16 +39,6 @@ public class PersistenceJPAConfig {
 		return properties;
 	}
 
-//	@Bean
-//	public DataSource dataSource() {
-//		BasicDataSource dataSource = new BasicDataSource();
-//		dataSource.setDriverClassName("org.hsqldb.jdbcDriver");
-//		dataSource.setUrl("jdbc:hsqldb:mem:training");
-//		dataSource.setUsername("sa");
-//		dataSource.setPassword("");
-//		return dataSource;
-//	}
-
 	@Bean
 	public DataSource dataSource() {
 		BasicDataSource dataSource = new BasicDataSource();
