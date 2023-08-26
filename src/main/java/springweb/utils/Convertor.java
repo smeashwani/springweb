@@ -1,7 +1,5 @@
 package springweb.utils;
 
-import java.lang.reflect.InvocationTargetException;
-
 import org.springframework.beans.BeanUtils;
 
 import springweb.entity.ReservationEntity;

@@ -27,20 +27,16 @@ public class HibernateConf {
 		return sessionFactory;
 	}
 
-	/*
-	 * @Bean public DataSource dataSource() { BasicDataSource dataSource = new
-	 * BasicDataSource(); dataSource.setDriverClassName("org.hsqldb.jdbcDriver");
-	 * dataSource.setUrl("jdbc:hsqldb:mem:training"); dataSource.setUsername("sa");
-	 * dataSource.setPassword(""); return dataSource; }
-	 */
-
 	@Bean
 	public DataSource dataSource()  {
 		DataSource dataSource = null;
 		try {
-			dataSource = new SimpleDriverDataSource(new com.mysql.cj.jdbc.Driver(),"jdbc:mysql://localhost:3306/training","root","root");
+			dataSource = new SimpleDriverDataSource(
+					new com.mysql.cj.jdbc.Driver(),
+					"jdbc:mysql://localhost:3306/training",
+					"root",
+					"root");
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return dataSource;
